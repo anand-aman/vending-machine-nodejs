@@ -1,7 +1,8 @@
-const { response } = require('express');
+'use strict';
 const express = require('express');
 const path = require('path');
 const port = 8000;
+const HOST = '0.0.0.0';
 
 const db = require('./config/mongoose');
 const Items = require('./models/items');
@@ -50,7 +51,9 @@ function getItemPrice(itemName){
             }
             resolve(item);;
         });
-    });
+    }).catch(function(reason) {
+        console.error("Promise rejected: "+reason);
+     });
 }
 
 app.get('/transaction',async function(req, res){
@@ -96,7 +99,7 @@ app.get('/transaction',async function(req, res){
 
 
 
-app.listen(port, function(err){
+app.listen(port, HOST, function(err){
     if(err){
         console.log("Error in running the server");
     }
