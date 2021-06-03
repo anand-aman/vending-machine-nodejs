@@ -2,7 +2,7 @@
 const mongoose = require('mongoose');
 
 //connect to the database
-mongoose.connect('mongodb+srv://aman:anand@cluster0.1cvld.mongodb.net/myFirstDatabase?retryWrites=true&w=majority');
+mongoose.connect('mongodb://localhost/vending_machine_db');
 // mongoose.connect('mongodb+srv://aman:anand@cluster0.1cvld.mongodb.net/myFirstDatabase?retryWrites=true&w=majority');
 
 // acquire the connection (to check if it is successful)

@@ -22,7 +22,6 @@ app.get('/get', function(req, res){
 
 app.post('/add-items', function(req, res){
     console.log(req.query);
-    console.log("Add Items");
     let item = {
         name: req.query.name,
         price: req.query.price
@@ -31,6 +30,7 @@ app.post('/add-items', function(req, res){
     Items.create(item, function(err, newItem){
         if(err){
             console.log('Error in adding item!');
+            console.error(err);
             flag = false;
         }
         console.log('New Item Added: ',newItem);
@@ -39,7 +39,7 @@ app.post('/add-items', function(req, res){
 
     item['status'] = flag ? "Successful" : "Failed";
     
-    res.end("Add Items");
+    res.json(item);
 });
 
 function getItemPrice(itemName){
