@@ -1,5 +1,6 @@
 'use strict';
 const express = require('express');
+const cors = require('cors');
 const path = require('path');
 const port = 8000;
 const HOST = '0.0.0.0';
@@ -13,7 +14,9 @@ const app = express();
 // app.set('view engine', 'ejs');
 // app.set('views', path.join(__dirname, 'views'));
 
+app.use(cors());
 app.use(express.urlencoded());
+
 // app.use(express.static('assets')); 
 
 app.get('/get', function(req, res){
